@@ -35,7 +35,7 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
-        entered_month = input('For what month do you want statistics - all, January, February, March, April, May, June? ').lower()
+        entered_month = input('For what month do you want statistics - all, January, February, March, April, May, June, July? ').lower()
 
         if entered_month in MONTHS:
             break
