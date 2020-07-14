@@ -11,4 +11,4 @@ Leverages our new Git and GitHub knowledge
 README.md, bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Credit goes to the Nanodegree Git Course.  Thank you!
