@@ -21,43 +21,43 @@ def get_filters():
     print('\nHello! Let\'s explore some US bikeshare data!\n')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-    
-        entered_city = input('For what city are you interested in getting statistics - Chicago, New York City, or Washington? ').lower()
-        
+
+        entered_city = input('For what city are you interested in getting statistics - Texas, Chicago, New York City, or Washington? ').lower()
+
         if entered_city in CITY_DATA:
             break
         elif entered_city == 'q':
-            exit()   
+            exit()
         else:
             print('That city is not valid.  Please enter a city in the list or q to quit. ')
-    
+
     city = entered_city
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         entered_month = input('For what month do you want statistics - all, January, February, March, April, May, June? ').lower()
-    
+
         if entered_month in MONTHS:
             break
         elif entered_month == 'q':
             exit()
         else:
             print('That month is not a valid selection.  Please enter a month in the list or q to quit. ')
-        
+
     month = entered_month
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-  
+
     while True:
         entered_day = input('For what day of the week do you want statistic - all, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday? ').lower()
-       
+
         if entered_day in DAYS:
             break
         elif entered_day == 'q':
             exit()
         else:
             print('That month is not a valid selection.  Please enter a day of the week in the list or q to quit. ')
-    
+
     day = entered_day
 
     print('-'*40)
@@ -75,29 +75,29 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df=pd.read_csv(CITY_DATA[city])
-       
+
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     # extract month and day of week from Start Time to create new columns
-    
+
     df['Month'] = df['Start Time'].dt.month
     df['Day_Of_Week'] = df['Start Time'].dt.weekday_name
     df['Hour'] = df['Start Time'].dt.hour
-    
+
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding list
         months = ['january','february','march','april','may','june']
         month = months.index(month) + 1
-        
-        # filter by month to create the new dataframe 
+
+        # filter by month to create the new dataframe
         df = df[df['Month'] == month]
-        
+
     # filter by day of week if applicable
     if day != 'all':
         #filter by day of week to create the new dataframe
         df = df[df['Day_Of_Week'] == day.title()]
-                         
+
     return df
 
 def time_stats(df):
@@ -159,7 +159,7 @@ def trip_duration_stats(df):
     # TO DO: display mean travel time
     mean_trip_duration = df['Trip Duration'].mean()
     print('The Mean Trip Duration - ', mean_trip_duration)
- 
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -176,33 +176,33 @@ def user_stats(df):
     print('Number of Distinct User Types -', user_type_distinct_values)
     user_type_cnt = df['User Type'].value_counts()
     print('See below for Counts by User Type \n', user_type_cnt)
-   
+
     # TO DO: Display counts of gender
     if 'Gender' in df.columns:
         gender_distinct_values = df['Gender'].nunique()
         print('\nNumber of Distinct Genders -', gender_distinct_values)
         gender_cnt = df['Gender'].value_counts()
         print('See below for Counts by Gender \n', gender_cnt)
-    else: 
+    else:
         print('Note: the file does not contain Gender information')
-        
+
     # TO DO: Display earliest, most recent, and most common year of birth
-    
+
     if 'Birth Year' in df.columns:
         print('\nThe earliest Birth Year -', int(df['Birth Year'].min()))
-        print('The most recent Birth Year -', int(df['Birth Year'].max()))   
-        print('The most common Birth Year -', int(df['Birth Year'].mode())) 
-    else: 
+        print('The most recent Birth Year -', int(df['Birth Year'].max()))
+        print('The most common Birth Year -', int(df['Birth Year'].mode()))
+    else:
         print('Note: the file does not contain Birth Year information')
-  
-                  
+
+
     print('\nThis took %s seconds.' % (time.time() - start_time))
     print('-'*40)
 
-    
+
     show_data = 'n'
     r=0
-    pd.set_option('display.max_columns', None)  
+    pd.set_option('display.max_columns', None)
     while True:
         show_data = input('\nWould you like to see 5 rows of detail data (y/n)? ').lower()
         if show_data == 'y':
@@ -210,13 +210,13 @@ def user_stats(df):
             r = r + 5
         else:
             print('\n')
-            print('-'*117)            
+            print('-'*117)
             print('-'*19, 'Whoohooo! Having fun with python.  Thank you for your help on this project!! ', '-'*19)
-            print('-'*117) 
+            print('-'*117)
             break
 
-          
-     
+
+
 def main():
     while True:
         city, month, day = get_filters()
