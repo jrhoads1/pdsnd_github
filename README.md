@@ -5,10 +5,10 @@
 Nanodegree Git and GitHub Project
 
 ### Description
-Describe what your project is about and what it does
+Leverages our new Git and GitHub knowledge
 
 ### Files used
-Include the files used
+README.md, bikeshare.py
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
