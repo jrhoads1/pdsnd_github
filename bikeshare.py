@@ -10,7 +10,7 @@ MONTHS = {'all','january','february','march','april','may','june'}
 DAYS = {'all', 'monday','tuesday','wednesday','thursday','friday','saturday','sunday'}
 
 # This project is for the python project of the Nanodegree.
-# It leverages loops, inputs, functions and formatting. 
+# It leverages loops, inputs, functions and formatting.
 
 def get_filters():
     """
@@ -25,8 +25,6 @@ def get_filters():
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
 
-        entered_city = input('For what city are you interested in getting statistics - Chicago, New York City, or Washington? ').lower()
-
         if entered_city in CITY_DATA:
             break
         elif entered_city == 'q':
@@ -38,7 +36,7 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
-        entered_month = input('For what month do you want statistics - all, January, February, March, April, May, June? ').lower()
+        entered_month = input('For what month do you want statistics - all, January, February, March, April, May, June, July? ').lower()
 
         if entered_month in MONTHS:
             break
