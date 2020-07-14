@@ -9,8 +9,9 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 MONTHS = {'all','january','february','march','april','may','june'}
 DAYS = {'all', 'monday','tuesday','wednesday','thursday','friday','saturday','sunday'}
 
-# This is the python project of the Nanodegree.
- 
+# This project is for the python project of the Nanodegree.
+# It leverages loops, inputs, functions and formatting. 
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
